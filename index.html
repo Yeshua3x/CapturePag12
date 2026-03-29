@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inglês Fluente em 8 Meses | Método Acelerado 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <!-- HERO PROPAGANDA -->
+    <section class="gradient-bg text-white py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+                Fale Inglês com Confiança em apenas <span class="text-yellow-400">8 Meses</span>.
+            </h1>
+            <p class="text-xl mb-8 opacity-90">
+                Chega de cursos intermináveis. Domine conversação real com método comprovado.
+            </p>
+        </div>
+    </section>
+
+    <!-- FORM CENTRAL -->
+    <section class="relative -mt-12 px-4 pb-12">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-2xl p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">🚀 Garanta Sua Vaga Agora</h2>
+            
+            <form id="contact-form">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Nome Completo *</label>
+                    <input type="text" name="user_name" required
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition"
+                        placeholder="Ex: João Silva">
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">E-mail Principal *</label>
+                    <input type="email" name="user_email" required
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition"
+                        placeholder="seu@email.com">
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Por que quer fluência? *</label>
+                    <textarea name="message" rows="3" required
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition"
+                        placeholder="Carreira internacional, viagem, estudos..."></textarea>
+                </div>
+                
+                <button type="submit" id="submit-btn"
+                    class="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-blue-900 font-black py-4 rounded-lg uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl">
+                    💬 Quero Fluência em 8 Meses!
+                </button>
+                
+                <p id="response-msg" class="mt-4 text-center text-sm font-medium hidden"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section class="max-w-4xl mx-auto py-12 px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-12">Por que nosso método funciona?</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-6">
+                <div class="text-blue-600 text-4xl mb-4 mx-auto">🚀</div>
+                <h3 class="font-bold text-xl mb-2">Foco Conversação</h3>
+                <p class="text-gray-600">80% prática real, 20% teoria. Fala desde dia 1.</p>
+            </div>
+            <div class="p-6">
+                <div class="text-blue-600 text-4xl mb-4 mx-auto">🎯</div>
+                <h3 class="font-bold text-xl mb-2">8 Meses Garantidos</h3>
+                <p class="text-gray-600">Cronograma testado com 500+ alunos fluentes.</p>
+            </div>
+            <div class="p-6">
+                <div class="text-blue-600 text-4xl mb-4 mx-auto">📱</div>
+                <h3 class="font-bold text-xl mb-2">Aulas na Rotina</h3>
+                <p class="text-gray-600">15min/dia no celular. Resultados reais.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT 2 EMAILS (CONFIGURE SEUS IDs) -->
+    <script type="text/javascript">
+        /* ===== CONFIGURE AQUI SEUS IDs DA NOVA CONTA EMAILJS ===== */
+        const SERVICE_ID = 'service_khyv2do';              // Novo Service ID
+        const TEMPLATE_ID_LEAD = 'template_49ecr6g';      // Template 1: Lead pra você
+        const TEMPLATE_ID_CONFIRMACAO = 'template_iyrxgwc'; // Template 2: Confirmação pro aluno
+        const PUBLIC_KEY = '7iGeiOJIZReQQObxV';    // Dashboard > Account > Public Key
+        
+        /* ======================================================== */
+        
+        // Inicializar EmailJS
+        emailjs.init(PUBLIC_KEY);
+        
+        const btn = document.getElementById('submit-btn');
+        const form = document.getElementById('contact-form');
+        const msg = document.getElementById('response-msg');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Loading visual
+            btn.innerText = 'Enviando... ⏳';
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            
+            // EMAIL 1: Lead para você
+            emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_LEAD, this)
+                .then(() => {
+                    // EMAIL 2: Confirmação automática pro aluno
+                    return emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_CONFIRMACAO, this);
+                })
+                .then(() => {
+                    // ✅ SUCESSO AMBOS!
+                    btn.innerText = '✅ Vaga Garantida!';
+                    msg.innerText = 'Inscrição confirmada! Email enviado pra você.';
+                    msg.classList.remove('hidden', 'text-red-600');
+                    msg.classList.add('text-green-600');
+                    form.reset();
+                })
+                .catch((err) => {
+                    // ❌ ERRO
+                    btn.innerText = 'Tentar Novamente';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50');
+                    msg.innerText = 'Erro no envio. Tente novamente.';
+                    msg.classList.remove('hidden', 'text-green-600');
+                    msg.classList.add('text-red-600');
+                    console.error('EmailJS Error:', err);
+                });
+        });
+
+      
+    </script>
+
+</body>
+</html>
