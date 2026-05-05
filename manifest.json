@@ -1,10 +1,12 @@
+#1e3a8a 0%, #3b82f6 100%); }
+    </style>
 {
-  "name": "Evangelho Vivido",
-  "short_name": "Evangelho",
+  "name": "Fale inglês",
+  "short_name": "C8Inglês",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#004b87",
-  "theme_color": "#007acc",
+  "background_color": "#1e3a8a",
+  "theme_color": "#3b82f6",
   "orientation": "portrait",
   "icons": [
     {
